@@ -4,7 +4,7 @@ metadata:
   name: mongo-storage
 spec:
   accessModes:
-    - ReadWriteOnce
+    - ReadWriteMany
   resources:
     requests:
       storage: 8Gi
