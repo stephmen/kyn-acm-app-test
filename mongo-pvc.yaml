@@ -4,7 +4,7 @@ metadata:
   name: mongo-storage
 spec:
   accessModes:
-    - ReadWriteMany
+    - ReadWriteOnce
   storageClassName: ocs-external-storagecluster-ceph-rbd-shared-2  
   resources:
     requests:
