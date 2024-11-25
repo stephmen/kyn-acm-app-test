@@ -14,19 +14,15 @@ spec:
       labels:
         name: mongo
     spec:
-      initContainers:
-      - name: init-volume-permissions
-        image: busybox
-        command: ["sh", "-c", "chmod -R 777 /data/db"]
-        volumeMounts:
-        - name: mongo-db
-          mountPath: /data/db
       containers:
       - image: quay.io/powercloud/mongodb:latest
         name: mongo
         ports:
         - name: mongo
           containerPort: 27017
+        volumeMounts:
+          - name: mongo-db
+            mountPath: /data/db
       volumes:
         - name: mongo-db
           persistentVolumeClaim:
