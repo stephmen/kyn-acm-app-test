@@ -17,7 +17,7 @@ spec:
       initContainers:
       - name: init-volume-permissions
         image: busybox
-        command: ["sh", "-c", "chmod -R 777 /data/db && chown -R 999:999 /data/db"]
+        command: ["sh", "-c", "chmod -R 777 /data/db"]
         volumeMounts:
         - name: mongo-db
           mountPath: /data/db
@@ -27,9 +27,6 @@ spec:
         ports:
         - name: mongo
           containerPort: 27017
-        volumeMounts:
-          - name: mongo-db
-            mountPath: /data/db
       volumes:
         - name: mongo-db
           persistentVolumeClaim:
