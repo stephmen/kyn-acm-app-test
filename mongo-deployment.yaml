@@ -23,11 +23,6 @@ spec:
         volumeMounts:
           - name: mongo-db
             mountPath: /data/db
-        securityContext:
-            runAsUser: 1000      # Ensure UID matches PVC file ownership
-            allowPrivilegeEscalation: false
-      securityContext:
-        fsGroup: 1000  
       volumes:
         - name: mongo-db
           persistentVolumeClaim:
