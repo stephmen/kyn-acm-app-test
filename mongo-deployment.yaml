@@ -14,6 +14,20 @@ spec:
       labels:
         name: mongo
     spec:
+      initContainers:
+        - resources: {}
+          terminationMessagePath: /dev/termination-log
+          name: fix-permissions
+          command:
+            - sh
+            - '-c'
+            - 'chown -R 999:999 /data/db && chmod -R g+rw /data/db'
+          securityContext:
+            runAsUser: 0
+          imagePullPolicy: Always
+          volumeMounts:
+            - name: mongo-db
+              mountPath: /data/db
       containers:
       - image: quay.io/powercloud/mongodb:latest
         name: mongo
