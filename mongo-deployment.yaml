@@ -15,9 +15,7 @@ spec:
         name: mongo
     spec:
       securityContext:
-        runAsUser: 1000880000  # Ensures the same user ID
-        runAsGroup: 1000880000  # Ensures the same group ID
-        fsGroup: 1000880000     # Group for mounted volumes     
+        runAsUser: 1000880000  # Ensures the same user ID     
       containers:
       - image: quay.io/powercloud/mongodb:latest
         name: mongo
